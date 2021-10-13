@@ -2,6 +2,7 @@ package com.example.heroku.controllers;
 
 import com.example.heroku.models.Programmer;
 import com.example.heroku.repositories.ProgrammerRepository;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +19,7 @@ public class Programmers {
     @GetMapping("/programmers")
     public Iterable<Programmer> getProgrammers(){
         return programmers.findAll();
+
     }
     @GetMapping("/programmers/{id}")
     public Programmer getProgrammerById(@PathVariable Long id){
@@ -34,6 +36,7 @@ public class Programmers {
             return "Found programmer";
         }).orElse("programmer not found");
     }
+
     @DeleteMapping("/programmers/{id}")
     public void deleteProgrammerById(@PathVariable Long id){
         programmers.deleteById(id);
